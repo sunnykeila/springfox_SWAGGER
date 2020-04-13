@@ -340,30 +340,14 @@ public class ModelContext {
     ModelContext that = (ModelContext) o;
 
     return
-        Objects.equals(
-            parameterId,
-            that.parameterId)
-            && Objects.equals(
-            groupName,
-            that.groupName)
-            && Objects.equals(
-            type,
-            that.type)
-            && Objects.equals(
-            view,
-            that.view)
-            && Objects.equals(
-            validationGroups,
-            that.validationGroups)
-            && Objects.equals(
-            documentationType,
-            that.documentationType)
-            && Objects.equals(
-            returnType,
-            that.returnType)
-            && Objects.equals(
-            namingStrategy(),
-            that.namingStrategy());
+        Objects.equals(parameterId, that.parameterId)
+            && Objects.equals(groupName, that.groupName)
+            && Objects.equals(type, that.type)
+            && Objects.equals(view, that.view)
+            && Objects.equals(validationGroups, that.validationGroups)
+            && Objects.equals(documentationType, that.documentationType)
+            && Objects.equals(returnType, that.returnType)
+            && Objects.equals(namingStrategy(), that.namingStrategy());
   }
 
   private String namingStrategy() {
