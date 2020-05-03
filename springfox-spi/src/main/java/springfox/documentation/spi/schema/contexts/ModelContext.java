@@ -77,10 +77,10 @@ public class ModelContext {
     this.returnType = returnType;
     this.view = view;
     this.validationGroups = new HashSet<>(validationGroups);
-    String sourceIdentifier = String.format(
-        "%s_%s",
-        parameterId,
-        type.getBriefDescription());
+    String sourceIdentifier = new StringBuilder(parameterId)
+        .append("_")
+        .append(type.getBriefDescription()).
+            toString();
     this.modelBuilder =
         new ModelBuilder(sourceIdentifier);
 
@@ -104,10 +104,10 @@ public class ModelContext {
     this.ignorableTypes = parentContext.ignorableTypes;
     this.registeredTypes = parentContext.registeredTypes;
     this.genericNamingStrategy = parentContext.getGenericNamingStrategy();
-    String sourceIdentifier = String.format(
-        "%s_%s",
-        parameterId,
-        input.getBriefDescription());
+    String sourceIdentifier = new StringBuilder(parameterId)
+        .append("_")
+        .append(type.getBriefDescription()).
+            toString();
     this.modelBuilder =
         new ModelBuilder(sourceIdentifier);
     this.modelSpecificationBuilder = new ModelSpecificationBuilder(sourceIdentifier);
