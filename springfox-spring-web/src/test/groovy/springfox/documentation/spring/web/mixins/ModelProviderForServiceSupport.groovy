@@ -24,6 +24,8 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.PropertyNamingStrategy
 import org.springframework.plugin.core.OrderAwarePluginRegistry
 import org.springframework.plugin.core.PluginRegistry
+import springfox.documentation.schema.CachingModelDependencyProvider
+import springfox.documentation.schema.CachingModelProvider
 import springfox.documentation.schema.DefaultModelDependencyProvider
 import springfox.documentation.schema.DefaultModelProvider
 import springfox.documentation.schema.DefaultTypeNameProvider
@@ -32,6 +34,7 @@ import springfox.documentation.schema.ModelProvider
 import springfox.documentation.schema.TypeNameExtractor
 import springfox.documentation.schema.configuration.ObjectMapperConfigured
 import springfox.documentation.schema.plugins.SchemaPluginsManager
+import springfox.documentation.schema.property.CachingModelPropertiesProvider
 import springfox.documentation.schema.property.FactoryMethodProvider
 import springfox.documentation.schema.property.ModelSpecificationFactory
 import springfox.documentation.schema.property.ObjectMapperBeanPropertyNamingStrategy
@@ -79,17 +82,18 @@ trait ModelProviderForServiceSupport implements ServicePluginsSupport {
     def modelDependenciesProvider =
         new DefaultModelDependencyProvider(
             typeResolver,
-            modelPropertiesProvider,
+            new CachingModelPropertiesProvider(typeResolver, modelPropertiesProvider),
             typeNameExtractor,
             enumTypeDeterminer,
             defaultSchemaPlugins())
-    new DefaultModelProvider(
-        typeResolver,
-        modelPropertiesProvider,
-        modelDependenciesProvider,
-        pluginsManager,
-        typeNameExtractor,
-        enumTypeDeterminer)
+    new CachingModelProvider(
+        new DefaultModelProvider(
+          typeResolver,
+          modelPropertiesProvider,
+          new CachingModelDependencyProvider(modelDependenciesProvider),
+          pluginsManager,
+          typeNameExtractor,
+          enumTypeDeterminer))
   }
 
   ModelProvider modelProviderWithSnakeCaseNamingStrategy(

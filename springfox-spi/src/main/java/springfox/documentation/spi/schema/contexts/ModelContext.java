@@ -77,15 +77,10 @@ public class ModelContext {
     this.returnType = returnType;
     this.view = view;
     this.validationGroups = new HashSet<>(validationGroups);
-    String sourceIdentifier = new StringBuilder(parameterId)
-        .append("_")
-        .append(type.getBriefDescription()).
-            toString();
-    this.modelBuilder =
-        new ModelBuilder(sourceIdentifier);
+    this.modelBuilder = new ModelBuilder(getModelId());
 
     this.modelSpecificationBuilder =
-        new ModelSpecificationBuilder(sourceIdentifier);
+        new ModelSpecificationBuilder(getModelId());
   }
 
   @SuppressWarnings("ParameterNumber")
@@ -109,8 +104,8 @@ public class ModelContext {
         .append(type.getBriefDescription()).
             toString();
     this.modelBuilder =
-        new ModelBuilder(sourceIdentifier);
-    this.modelSpecificationBuilder = new ModelSpecificationBuilder(sourceIdentifier);
+        new ModelBuilder(getModelId());
+    this.modelSpecificationBuilder = new ModelSpecificationBuilder(getModelId());
   }
 
   /**
@@ -128,13 +123,20 @@ public class ModelContext {
   }
 
   /**
-   * @return type id behind this context
+   * @return type id of model behind this context
+   */
+  public String getModelId() {
+    return type.getBriefDescription();
+  }
+
+  /**
+   * @return type id of type behind this context
    */
   public String getTypeId() {
-    return String.format(
-        "%s_%s",
-        parameterId,
-        type.getBriefDescription());
+    return new StringBuilder(parameterId)
+        .append("_")
+        .append(getModelId()).
+        toString();
   }
 
   /**
@@ -340,8 +342,7 @@ public class ModelContext {
     ModelContext that = (ModelContext) o;
 
     return
-        Objects.equals(parameterId, that.parameterId)
-            && Objects.equals(groupName, that.groupName)
+          Objects.equals(groupName, that.groupName)
             && Objects.equals(type, that.type)
             && Objects.equals(view, that.view)
             && Objects.equals(validationGroups, that.validationGroups)
@@ -360,7 +361,6 @@ public class ModelContext {
   @Override
   public int hashCode() {
     return Objects.hash(
-        parameterId,
         groupName,
         type,
         view,

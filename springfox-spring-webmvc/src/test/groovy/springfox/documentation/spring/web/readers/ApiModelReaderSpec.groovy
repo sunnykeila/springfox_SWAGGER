@@ -441,11 +441,11 @@ class ApiModelReaderSpec
     and:
     pirate_1.getProperties().containsKey('monkey')
     ModelReference modelRef_1 = pirate_1.getProperties().get('monkey').getModelRef()
-    modelRef_1.getModelId().get() == "0_0_springfox.documentation.spring.web.dummy.models.Monkey"
+    modelRef_1.getModelId().get() == "springfox.documentation.spring.web.dummy.models.Monkey"
 
     monkey_1.getProperties().containsKey('pirate')
     ModelReference modelRef_2 = monkey_1.getProperties().get('pirate').getModelRef()
-    modelRef_2.getModelId().get() == "0_0_springfox.documentation.spring.web.dummy.models.Pirate"
+    modelRef_2.getModelId().get() == "springfox.documentation.spring.web.dummy.models.Pirate"
 
     and:
     Model pirate_2 = models_2[Pirate.simpleName]
@@ -461,11 +461,11 @@ class ApiModelReaderSpec
     and:
     pirate_2.getProperties().containsKey('monkey')
     ModelReference modelRef_3 = pirate_2.getProperties().get('monkey').getModelRef()
-    modelRef_3.getModelId().get() == "0_1_springfox.documentation.spring.web.dummy.models.Monkey"
+    modelRef_3.getModelId().get() == "springfox.documentation.spring.web.dummy.models.Monkey"
 
     monkey_2.getProperties().containsKey('pirate')
     ModelReference modelRef_4 = monkey_2.getProperties().get('pirate').getModelRef()
-    modelRef_4.getModelId().get() == "0_1_springfox.documentation.spring.web.dummy.models.Pirate"
+    modelRef_4.getModelId().get() == "springfox.documentation.spring.web.dummy.models.Pirate"
 
   }
 
@@ -504,17 +504,17 @@ class ApiModelReaderSpec
     and:
     recursiveTypeWithConditions_1.getProperties().containsKey('monkey')
     ModelReference modelRef_1 = recursiveTypeWithConditions_1.getProperties().get('monkey').getModelRef()
-    modelRef_1.getModelId().get() == "0_0_springfox.documentation.spring.web.dummy.models.Monkey"
+    modelRef_1.getModelId().get() == "springfox.documentation.spring.web.dummy.models.Monkey"
     modelRef_1.getType() == 'Monkey'
 
     monkey_1.getProperties().containsKey('pirate')
     ModelReference modelRef_2 = monkey_1.getProperties().get('pirate').getModelRef()
-    modelRef_2.getModelId().get() == "0_0_springfox.documentation.spring.web.dummy.models.Pirate"
+    modelRef_2.getModelId().get() == "springfox.documentation.spring.web.dummy.models.Pirate"
     modelRef_2.getType() == 'Pirate'
 
     pirate_1.getProperties().containsKey('monkey')
     ModelReference modelRef_3 = pirate_1.getProperties().get('monkey').getModelRef()
-    modelRef_3.getModelId().get() == "0_0_springfox.documentation.spring.web.dummy.models.Monkey"
+    modelRef_3.getModelId().get() == "springfox.documentation.spring.web.dummy.models.Monkey"
     modelRef_3.getType() == 'Monkey'
 
     and:
@@ -533,19 +533,19 @@ class ApiModelReaderSpec
     and:
     recursiveTypeWithConditions_2.getProperties().containsKey('monkey')
     ModelReference modelRef_4 = recursiveTypeWithConditions_2.getProperties().get('monkey').getModelRef()
-    modelRef_4.getModelId().get() == "0_1_springfox.documentation.spring.web.dummy.models.Monkey"
+    modelRef_4.getModelId().get() == "springfox.documentation.spring.web.dummy.models.Monkey"
     modelRef_4.getType() == 'Monkey'
 
     recursiveTypeWithConditions_2.getProperties().containsKey('conditionalProperty')
 
     monkey_2.getProperties().containsKey('pirate')
     ModelReference modelRef_5 = monkey_2.getProperties().get('pirate').getModelRef()
-    modelRef_5.getModelId().get() == "0_1_springfox.documentation.spring.web.dummy.models.Pirate"
+    modelRef_5.getModelId().get() == "springfox.documentation.spring.web.dummy.models.Pirate"
     modelRef_5.getType() == 'Pirate'
 
     pirate_2.getProperties().containsKey('monkey')
     ModelReference modelRef_6 = pirate_2.getProperties().get('monkey').getModelRef()
-    modelRef_6.getModelId().get() == "0_1_springfox.documentation.spring.web.dummy.models.Monkey"
+    modelRef_6.getModelId().get() == "springfox.documentation.spring.web.dummy.models.Monkey"
     modelRef_6.getType() == 'Monkey'
 
   }
@@ -656,19 +656,19 @@ class ApiModelReaderSpec
     recursiveTypeWithConditionsOuter_1.getProperties().containsKey('recursiveTypeWithNonEqualsConditionsMiddle')
     ModelReference modelRef_1 = recursiveTypeWithConditionsOuter_1.getProperties()
         .get('recursiveTypeWithNonEqualsConditionsMiddle').getModelRef()
-    modelRef_1.getModelId().get() == "0_0_springfox.documentation.spring.web.dummy.models.RecursiveTypeWithNonEqualsConditionsMiddle"
+    modelRef_1.getModelId().get() == "springfox.documentation.spring.web.dummy.models.RecursiveTypeWithNonEqualsConditionsMiddle"
     modelRef_1.getType() == 'RecursiveTypeWithNonEqualsConditionsMiddle'
 
     recursiveTypeWithConditionsMiddle_1.getProperties().containsKey('recursiveTypeWithNonEqualsConditionsInner')
     ModelReference modelRef_2 = recursiveTypeWithConditionsMiddle_1.getProperties()
         .get('recursiveTypeWithNonEqualsConditionsInner').getModelRef()
-    modelRef_2.getModelId().get() == "0_0_springfox.documentation.spring.web.dummy.models.RecursiveTypeWithNonEqualsConditionsInner"
+    modelRef_2.getModelId().get() == "springfox.documentation.spring.web.dummy.models.RecursiveTypeWithNonEqualsConditionsInner"
     modelRef_2.getType() == 'RecursiveTypeWithNonEqualsConditionsInner'
 
     recursiveTypeWithConditionsInner_1.getProperties().containsKey('recursiveTypeWithNonEqualsConditionsOuter')
     ModelReference modelRef_3 = recursiveTypeWithConditionsInner_1.getProperties()
         .get('recursiveTypeWithNonEqualsConditionsOuter').getModelRef()
-    modelRef_3.getModelId().get() == "0_0_springfox.documentation.spring.web.dummy.models.RecursiveTypeWithNonEqualsConditionsOuter"
+    modelRef_3.getModelId().get() == "springfox.documentation.spring.web.dummy.models.RecursiveTypeWithNonEqualsConditionsOuter"
     modelRef_3.getType() == 'RecursiveTypeWithNonEqualsConditionsOuter'
 
     and:
@@ -690,19 +690,19 @@ class ApiModelReaderSpec
     recursiveTypeWithConditionsOuter_2.getProperties().containsKey('recursiveTypeWithNonEqualsConditionsMiddle')
     ModelReference modelRef_4 = recursiveTypeWithConditionsOuter_2.getProperties()
         .get('recursiveTypeWithNonEqualsConditionsMiddle').getModelRef()
-    modelRef_4.getModelId().get() == "0_1_springfox.documentation.spring.web.dummy.models.RecursiveTypeWithNonEqualsConditionsMiddle"
+    modelRef_4.getModelId().get() == "springfox.documentation.spring.web.dummy.models.RecursiveTypeWithNonEqualsConditionsMiddle"
     modelRef_4.getType() == 'RecursiveTypeWithNonEqualsConditionsMiddle_1'
 
     recursiveTypeWithConditionsMiddle_2.getProperties().containsKey('recursiveTypeWithNonEqualsConditionsInner')
     ModelReference modelRef_5 = recursiveTypeWithConditionsMiddle_2.getProperties()
         .get('recursiveTypeWithNonEqualsConditionsInner').getModelRef()
-    modelRef_5.getModelId().get() == "0_1_springfox.documentation.spring.web.dummy.models.RecursiveTypeWithNonEqualsConditionsInner"
+    modelRef_5.getModelId().get() == "springfox.documentation.spring.web.dummy.models.RecursiveTypeWithNonEqualsConditionsInner"
     modelRef_5.getType() == 'RecursiveTypeWithNonEqualsConditionsInner_1'
 
     recursiveTypeWithConditionsInner_2.getProperties().containsKey('recursiveTypeWithNonEqualsConditionsOuter')
     ModelReference modelRef_6 = recursiveTypeWithConditionsInner_2.getProperties()
         .get('recursiveTypeWithNonEqualsConditionsOuter').getModelRef()
-    modelRef_6.getModelId().get() == "0_1_springfox.documentation.spring.web.dummy.models.RecursiveTypeWithNonEqualsConditionsOuter"
+    modelRef_6.getModelId().get() == "springfox.documentation.spring.web.dummy.models.RecursiveTypeWithNonEqualsConditionsOuter"
     modelRef_6.getType() == 'RecursiveTypeWithNonEqualsConditionsOuter_1'
 
   }
@@ -1091,7 +1091,7 @@ class ApiModelReaderSpec
     recursiveTypeWithNonEqualsConditionsOuterWithSubTypes.getProperties().size() == 1
     recursiveTypeWithNonEqualsConditionsOuterWithSubTypes.getSubTypes().size() == 1
     ModelReference modelRef = recursiveTypeWithNonEqualsConditionsOuterWithSubTypes.getSubTypes().get(0)
-    modelRef.getModelId().get() == "2_0_springfox.documentation.spring.web.dummy.models.RecursiveTypeWithConditions"
+    modelRef.getModelId().get() == "springfox.documentation.spring.web.dummy.models.RecursiveTypeWithConditions"
     modelRef.getType() == 'RecursiveTypeWithConditions'
     recursiveTypeWithConditions_3.equalsIgnoringName(recursiveTypeWithConditions_1)
 
@@ -1188,7 +1188,7 @@ class ApiModelReaderSpec
     ModelReference modelRef_1 = fancyPet_1.getProperties().get('categories').getModelRef()
     modelRef_1.isCollection()
     modelRef_1.itemModel().get()
-        .getModelId().get() == "0_0_springfox.documentation.spring.web.dummy.models.Category"
+        .getModelId().get() == "springfox.documentation.spring.web.dummy.models.Category"
     and:
     category_1.getProperties().size() == 1
     category_1.getProperties().containsKey('name')
@@ -1209,7 +1209,7 @@ class ApiModelReaderSpec
     ModelReference modelRef_2 = fancyPet_2.getProperties().get('categories').getModelRef()
     modelRef_2.isCollection()
     modelRef_2.itemModel().get()
-        .getModelId().get() == "0_1_springfox.documentation.spring.web.dummy.models.Category"
+        .getModelId().get() == "springfox.documentation.spring.web.dummy.models.Category"
     and:
     category_2.getProperties().size() == 1
     category_2.getProperties().containsKey('name')
