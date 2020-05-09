@@ -75,8 +75,7 @@ public class ModelContext {
     this.validationGroups = new HashSet<>(validationGroups);
     this.modelBuilder = new ModelBuilder(getModelId());
 
-    this.modelSpecificationBuilder =
-        new ModelSpecificationBuilder(getModelId());
+    this.modelSpecificationBuilder = new ModelSpecificationBuilder();
   }
 
   @SuppressWarnings("ParameterNumber")
@@ -100,7 +99,7 @@ public class ModelContext {
             toString();
     this.modelBuilder =
         new ModelBuilder(getModelId());
-    this.modelSpecificationBuilder = new ModelSpecificationBuilder(getModelId());
+    this.modelSpecificationBuilder = new ModelSpecificationBuilder();
   }
 
   /**
