@@ -64,9 +64,9 @@ public interface UniqueTypeNameAdapter {
   /**
    * Sets equality of two models to make sure, that models will be treated as one
    * 
-   * @param modelIdOf
+   * @param typeIdOf
    *          - id of current model type
-   * @param modelIdTo
+   * @param typeIdTo
    *          - id of existing model type
    */
   void setEqualityFor(String typeIdOf, String typeIdTo);
