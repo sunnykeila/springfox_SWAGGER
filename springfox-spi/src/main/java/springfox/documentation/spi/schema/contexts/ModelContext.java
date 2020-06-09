@@ -96,10 +96,6 @@ public class ModelContext {
     this.alternateTypeProvider = parentContext.alternateTypeProvider;
     this.ignorableTypes = parentContext.ignorableTypes;
     this.genericNamingStrategy = parentContext.getGenericNamingStrategy();
-    String sourceIdentifier = new StringBuilder(parameterId)
-        .append("_")
-        .append(type.getBriefDescription()).
-            toString();
     this.modelBuilder =
         new ModelBuilder(getModelId());
     this.modelSpecificationBuilder = new ModelSpecificationBuilder();
@@ -392,5 +388,19 @@ public class ModelContext {
 
   public boolean canIgnore(ResolvedType type) {
     return ignorableTypes.contains(type.getErasedType());
+  }
+
+  public ModelContext copy() {
+    return new ModelContext(
+        this.parameterId,
+        this.groupName,
+        this.type,
+        this.returnType,
+        this.view,
+        this.validationGroups,
+        this.documentationType,
+        this.alternateTypeProvider,
+        this.genericNamingStrategy,
+        this.ignorableTypes);
   }
 }
