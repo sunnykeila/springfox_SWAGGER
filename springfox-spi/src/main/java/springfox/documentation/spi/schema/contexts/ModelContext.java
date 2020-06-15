@@ -77,8 +77,6 @@ public class ModelContext {
     this.validationGroups = new HashSet<>(validationGroups);
     this.modelBuilder = new ModelBuilder(getModelId());
     this.modelSpecificationBuilder = new ModelSpecificationBuilder();
-    this.getEffectiveModelKeyBuilder()
-        .isResponse(isReturnType());
   }
 
   @SuppressWarnings("ParameterNumber")
@@ -99,8 +97,6 @@ public class ModelContext {
     this.modelBuilder =
         new ModelBuilder(getModelId());
     this.modelSpecificationBuilder = new ModelSpecificationBuilder();
-    this.getEffectiveModelKeyBuilder()
-        .isResponse(isReturnType());
   }
 
   /**

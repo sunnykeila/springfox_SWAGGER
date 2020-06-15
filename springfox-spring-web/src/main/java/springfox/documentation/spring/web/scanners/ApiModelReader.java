@@ -93,19 +93,13 @@ public class ApiModelReader {
     Set<ModelContext> modelContexts = pluginsManager.modelContexts(context);
 
     for (Map.Entry<String, Set<Model>> entry : context.getModelMap().entrySet()) {
-      entry.getValue().stream()
-           .filter(model -> !uniqueModels.containsKey(model.getName()))
+
+      entry.getValue().stream().filter(model -> !uniqueModels.containsKey(model.getName()))
            .forEach(
                model -> {
-                 adapter.registerType(
-                     model.getName(),
-                     model.getId());
-                 uniqueModels.put(
-                     model.getName(),
-                     model);
-                 parameterModelMap.put(
-                     model.getId(),
-                     entry.getKey());
+                 adapter.registerType(model.getName(), model.getId());
+                 uniqueModels.put(model.getName(), model);
+                 parameterModelMap.put(model.getId(), entry.getKey());
                });
     }
 
@@ -304,13 +298,11 @@ public class ApiModelReader {
 
         if (modelId.isPresent() && mergingContext.containsModel(modelId.get())) {
           String sModelId = modelId.get();
-          ModelContext modelContext =
-              Optional.ofNullable(parametersMatching.get(sModelId))
-                      .map(op -> op.orElse(parameter))
-                      .map(p -> pseudoContext(
-                          p,
-                          mergingContext.getModelContext(sModelId)))
-                      .orElseGet(() -> mergingContext.getModelContext(sModelId));
+
+          ModelContext modelContext = Optional.ofNullable(parametersMatching.get(sModelId))
+              .map(op -> op.orElse(parameter))
+              .map(p -> pseudoContext(p, mergingContext.getModelContext(sModelId)))
+              .orElseGet(() -> mergingContext.getModelContext(sModelId));
           modelReference = modelRefFactory(
               modelContext,
               enumTypeDeterminer,
@@ -328,14 +320,11 @@ public class ApiModelReader {
 
         if (modelId.isPresent() && mergingContext.containsModel(modelId.get())) {
           String sModelId = modelId.get();
-          ModelContext modelContext =
-              Optional.ofNullable(parametersMatching.get(sModelId))
-                      .map(op -> op.orElse(parameter))
-                      .map(p -> pseudoContext(
-                          p,
-                          mergingContext.getModelContext(sModelId)))
-                      .orElseGet(() -> mergingContext.getModelContext(sModelId));
 
+          ModelContext modelContext = Optional.ofNullable(parametersMatching.get(sModelId))
+              .map(op -> op.orElse(parameter))
+              .map(p -> pseudoContext(p, mergingContext.getModelContext(sModelId)))
+              .orElseGet(() -> mergingContext.getModelContext(sModelId));
           newProperties.put(
               propertyName,
               new ModelPropertyBuilder(property).build().updateModelRef(
