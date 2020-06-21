@@ -4,6 +4,7 @@ import com.fasterxml.classmate.TypeResolver;
 import groovy.lang.MetaClass;
 import org.joda.time.LocalDate;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.hateoas.Link;
 import org.springframework.http.HttpMethod;
@@ -36,6 +37,11 @@ import java.util.function.Predicate;
 import static springfox.documentation.builders.PathSelectors.*;
 
 @Configuration
+@ComponentScan({
+    "springfox.documentation.spring.web.dummy.controllers",
+    "springfox.test.contract.swagger",
+    "springfox.petstore.webflux.controller"
+    })
 @EnableSwagger2WebMvc
 public class Swagger2TestConfig {
   @Bean
